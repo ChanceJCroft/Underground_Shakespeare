@@ -25,7 +25,7 @@ const Joi = BaseJoi.extend(extension)
 
 //Joi allows for server side validation
 
-module.exports.campgroundSchema = Joi.object({
+module.exports.theatreSchema = Joi.object({
     campground: Joi.object({
         title: Joi.string().required().escapeHTML(),
         price: Joi.number().required().min(0),

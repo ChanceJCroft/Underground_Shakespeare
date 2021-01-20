@@ -1,4 +1,4 @@
-const { campgroundSchema, reviewSchema } = require('./schemas.js');
+const { theatreSchema, reviewSchema } = require('./schemas.js');
 const ExpressError = require('./utils/ExpressError');
 const Theatre = require('./models/theatre');
 const Review = require('./models/review');
