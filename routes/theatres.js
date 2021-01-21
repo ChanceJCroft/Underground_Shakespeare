@@ -1,23 +1,23 @@
 const express = require('express');
 const router = express.Router();
-const campgrounds = require('../controllers/theatres');
+const theatres = require('../controllers/theatres');
 const catchAsync = require('../utils/catchAsync');
-const { isLoggedIn, isAuthor, validateCampground } = require('../middleware');
+const { isLoggedIn, isAuthor, validateTheatre } = require('../middleware');
 const multer = require('multer');
 const { storage } = require('../cloudinary');
 const upload = multer({ storage });
 
-const Campground = require('../models/campground');
+const Theatre = require('../models/theatre');
 
 router.route('/')
-    .get(catchAsync(campgrounds.index))
-    .post(isLoggedIn, upload.array('image'), validateCampground, catchAsync(campgrounds.createCampground))
+    .get(catchAsync(theatres.index))
+    .post(isLoggedIn, upload.array('image'), validateTheatre, catchAsync(theatres.createTheatre))
 
 
-router.get('/new', isLoggedIn, theatre.renderNewForm)
+router.get('/new', isLoggedIn, theatres.renderNewForm)
 
 router.route('/:id')
-    .get(catchAsync(theatre.showTheatre))
+    .get(catchAsync(theatres.showTheatre))
     .put(isLoggedIn, isAuthor, upload.array('image'), validateTheatre, catchAsync(theatres.updateTheatre))
     .delete(isLoggedIn, isAuthor, catchAsync(theatres.deleteTheatre));
 
