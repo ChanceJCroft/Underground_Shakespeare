@@ -16,7 +16,7 @@ module.exports.renderNewForm = (req, res) => {
 
 module.exports.createTheatre = async (req, res, next) => {
     const geoData = await geocoder.forwardGeocode({
-        query: req.body.campground.location,
+        query: req.body.theatre.location,
         limit: 1
     }).send()
     const theatre = new Theatre(req.body.theatre);
@@ -25,7 +25,7 @@ module.exports.createTheatre = async (req, res, next) => {
     theatre.author = req.user._id;
     await theatre.save();
     console.log(theatre);
-    req.flash('success', 'Successfully made a new campground!');
+    req.flash('success', 'Successfully made a new theatre!');
     res.redirect(`/theatres/${theatre._id}`)
 }
 
@@ -50,13 +50,13 @@ module.exports.renderEditForm = async (req, res) => {
         req.flash('error', 'Cannot find that theatre!');
         return res.redirect('/theatres');
     }
-    res.render('theatres/edit', { theatres });
+    res.render('theatres/edit', { theatre });
 }
 
 module.exports.updateTheatre = async (req, res) => {
     const { id } = req.params;
     console.log(req.body);
-    const theatre = await Theatre.findByIdAndUpdate(id, { ...req.body.theatre });
+    const theatre = await Theatre.findByIdAndUpdate(id, { ...req.body.theatres });
     const imgs = req.files.map(f => ({ url: f.path, filename: f.filename }));
     theatre.images.push(...imgs);
     await theatre.save();
@@ -64,7 +64,7 @@ module.exports.updateTheatre = async (req, res) => {
         for (let filename of req.body.deleteImages) {
             await cloudinary.uploader.destroy(filename);
         }
-        await campground.updateOne({ $pull: { images: { filename: { $in: req.body.deleteImages } } } })
+        await theatre.updateOne({ $pull: { images: { filename: { $in: req.body.deleteImages } } } })
     }
     req.flash('success', 'Successfully updated theatre!');
     res.redirect(`/theatres/${theatre._id}`)

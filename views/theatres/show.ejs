@@ -31,7 +31,7 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item text-muted"><%= theatre.location%></li>
                 <li class="list-group-item">Submitted by <%= theatre.author.username%></li>
-                <li class="list-group-item">$<%= theatre.price%>/night</li>
+                <li class="list-group-item">$<%= theatre.price%></li>
             </ul>
             <%  if( currentUser && theatre.author.equals(currentUser._id))  {%>
             <div class="card-body">
