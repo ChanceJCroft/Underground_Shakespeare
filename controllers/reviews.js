@@ -5,11 +5,11 @@ module.exports.createReview = async (req, res) => {
     const theatre = await Theatre.findById(req.params.id);
     const review = new Review(req.body.review);
     review.author = req.user._id;
-    campground.reviews.push(review);
+    theatre.reviews.push(review);
     await review.save();
     await theatre.save();
     req.flash('success', 'Created new review!');
-    res.redirect(`/theatre/${theatre._id}`);
+    res.redirect(`/theatres/${theatre._id}`);
 }
 
 module.exports.deleteReview = async (req, res) => {
@@ -17,5 +17,5 @@ module.exports.deleteReview = async (req, res) => {
     await Theatre.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
     await Review.findByIdAndDelete(reviewId);
     req.flash('success', 'Successfully deleted review')
-    res.redirect(`/theatre/${id}`);
+    res.redirect(`/theatres/${id}`);
 }
