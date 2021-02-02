@@ -20,12 +20,6 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 
@@ -35,7 +29,7 @@
   <a href="https://github.com/ChanceJCroft/Underground_Shakespeare">Underground Shakespeare
   </a>
 
-  <h3 align="center">project_title</h3>
+  <h3 align="center">Underground Shakespeare</h3>
 
   <p align="center">
     A full-stack web application used for the review and commenting of theatres around the country.
@@ -84,11 +78,14 @@
 
 ### Built With
 
-* [Boostrap]()
-* [Passport.js]()
-* [Express]()
-* [Node.js]()
-* [MongoDB]()
+* [Boostrap](https://getbootstrap.com/)
+* [Passport.js](http://www.passportjs.org/)
+* [Express](https://expressjs.com/)
+* [Node.js](https://nodejs.org/en/)
+* [MongoDB](https://www.mongodb.com/2)
+* [Mongoose](https://mongoosejs.com/docs/)
+* [EJS](https://ejs.co/)
+* [Mapbox](https://www.mapbox.com/)
 
 
 
@@ -97,13 +94,6 @@
 
 Simply follow the demo link above to try the site out, or download the files and run "npm install" from your terminal. 
 
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install
-  ```
 
 ### Installation
 
