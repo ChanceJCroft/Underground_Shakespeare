@@ -1,4 +1,4 @@
-const Campground = require('../models/campground');
+const Theatre = require('../models/campground');
 const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
 const mapBoxToken = process.env.MAPBOX_TOKEN;
 const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
@@ -16,7 +16,7 @@ module.exports.renderNewForm = (req, res) => {
 
 module.exports.createTheatre = async (req, res, next) => {
     const geoData = await geocoder.forwardGeocode({
-        query: req.body.campground.location,
+        query: req.body.theatre.location,
         limit: 1
     }).send()
     const theatre = new Theatre(req.body.theatre);
@@ -25,7 +25,7 @@ module.exports.createTheatre = async (req, res, next) => {
     theatre.author = req.user._id;
     await theatre.save();
     console.log(theatre);
-    req.flash('success', 'Successfully made a new campground!');
+    req.flash('success', 'Successfully made a new Theatre!');
     res.redirect(`/theatres/${theatre._id}`)
 }
 
